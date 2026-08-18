@@ -319,7 +319,7 @@ button:focus-visible {
 
 .other-work__repo {
   font-family: var(--font-mono);
-  font-size: 12.5px;
+  font-size: 13px;
   color: var(--link);
   white-space: nowrap;
 }
@@ -391,12 +391,85 @@ button:focus-visible {
 
 .contact__secondary {
   font-family: var(--font-mono);
-  font-size: 13.5px;
+  font-size: 14px;
   color: var(--text-dim);
   border-bottom: 1px solid var(--line);
 }
 
 .contact__secondary:hover { color: var(--accent); border-color: var(--accent); }
+
+.contact__body { flex: 1; }
+
+.contact-form {
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 520px;
+}
+
+.contact-form__eyebrow { margin-bottom: -6px; }
+
+.contact-form__row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contact-form__input {
+  font-family: var(--font-display);
+  font-size: 15px;
+  color: var(--text);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 11px 13px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.contact-form__input::placeholder { color: var(--muted); }
+
+.contact-form__input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-wash);
+}
+
+.contact-form__textarea { resize: vertical; min-height: 104px; }
+
+.contact-form__honeypot {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  height: 0;
+  width: 0;
+}
+
+.contact-form__submit {
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--bg);
+  background: var(--accent);
+  border: none;
+  padding: 11px 20px;
+  border-radius: var(--radius);
+  transition: background 0.15s ease;
+}
+
+.contact-form__submit:hover:not(:disabled) { background: #e8b757; }
+.contact-form__submit:disabled { opacity: 0.6; cursor: default; }
+
+.contact-form__status {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  margin-top: -4px;
+}
+
+.contact-form__status--ok { color: var(--accent); }
+.contact-form__status--err { color: #e6725f; }
 
 /* ---------- Footer ---------- */
 
@@ -406,14 +479,14 @@ button:focus-visible {
 }
 
 .stack-note {
-  font-size: 13.5px;
+  font-size: 14px;
   color: var(--text-dim);
   margin-bottom: 18px;
 }
 
 .stack-note summary {
   font-family: var(--font-mono);
-  font-size: 12.5px;
+  font-size: 13px;
   color: var(--muted);
   cursor: pointer;
 }
@@ -514,7 +587,7 @@ button:focus-visible {
 .detail__repo-link {
   display: inline-block;
   font-family: var(--font-mono);
-  font-size: 13.5px;
+  font-size: 14px;
   color: var(--link);
 }
 
