@@ -9,6 +9,12 @@ export const caseStudies = [
     title: 'Reporting Platform for Machine & Workforce Data',
     result: 'Replaced years of scattered spreadsheets with a searchable, centralized reporting system.',
     stack: ['Java', 'Spring Boot', 'PostgreSQL', 'REST API'],
+    highlights: [
+      '4-entity PostgreSQL schema (report, report_entries, workers, machines) — no update/delete anomalies',
+      'REST API: create/edit, filtering via JPA Specifications, machine/worker autocomplete',
+      'Server-computed rates (km/t, mh/t) eliminate a class of data-entry error',
+      'GPS-vs-self-reported hours discrepancy check the paper process couldn’t do',
+    ],
     repoUrl: 'https://github.com/draganb24/constructionsite',
     frontendRepoUrl: 'https://github.com/draganb24/construction-front',
     image: listFilterImg,
@@ -51,6 +57,12 @@ After demoing the working app to leadership, a new requirement came directly out
     title: 'Research Publishing Dashboard',
     result: 'Gave a professor a searchable, backed-up archive in place of local Word files.',
     stack: ['Laravel', 'MySQL', 'Tabler'],
+    highlights: [
+      'MySQL schema: posts, media, users, sessions — rich-text and uploads without integrity loss',
+      'Auth + route protection: only the owner edits, published work stays readable',
+      'Schema built to scale with a growing volume of papers and files',
+      'Replaced local Word files with a searchable, backed-up dashboard',
+    ],
     repoUrl: 'https://github.com/draganb24/blog-app-admin-panel',
     image: null, // TODO: add screenshot
     sections: [

@@ -7,7 +7,11 @@ export default function CaseStudyCard({ caseStudy }) {
         {caseStudy.image ? (
           <img src={caseStudy.image} alt={`Screenshot from ${caseStudy.title}`} />
         ) : (
-          <div className="case-card__media-placeholder field-label">screenshot pending</div>
+          <ul className="case-card__deliverables">
+            {caseStudy.highlights.map((item) => (
+              <li key={item} className="field-label">{item}</li>
+            ))}
+          </ul>
         )}
       </div>
       <div className="case-card__body">

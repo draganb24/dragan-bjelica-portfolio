@@ -7,13 +7,18 @@ export default function Hero() {
         <div className="hero__copy">
           <p className="eyebrow">role: backend_developer</p>
           <h1 className="hero__headline">
-            I design backend systems that grow with the business, not against it.
+            Java &amp; Spring Boot backend developer who turns messy data into
+            structured, searchable systems.
           </h1>
           <p className="hero__intro">
-            I'm a backend developer working mainly in Java and Spring Boot. My work starts
-            before the first line of code — turning ambiguous requirements, like a folder of
+            I design backend systems that grow with the business, not against it — starting
+            before the first line of code: turning ambiguous requirements, like a folder of
             spreadsheet reports, into a well-structured database, then building the roles,
-            content handling, and APIs on top with an eye for atomicity and maintainable code.
+            content handling, and REST APIs on top with an eye for atomicity and maintainable code.
+          </p>
+          <p className="hero__proof">
+            <span className="field-label">proof:</span> data modeling · REST APIs in Spring Boot ·
+            replacing spreadsheets &amp; paper with structured systems
           </p>
           <a href="#work" className="hero__cta">See how →</a>
         </div>
