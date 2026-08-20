@@ -1,9 +1,12 @@
 import { Link, useParams } from 'react-router-dom';
 import { caseStudies } from '../data/caseStudies';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 export default function CaseStudyDetail() {
   const { slug } = useParams();
   const caseStudy = caseStudies.find((cs) => cs.slug === slug);
+
+  useDocumentTitle(caseStudy ? caseStudy.title : 'Case study not found');
 
   if (!caseStudy) {
     return (

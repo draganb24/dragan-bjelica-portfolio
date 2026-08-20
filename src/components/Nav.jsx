@@ -6,8 +6,8 @@ export default function Nav() {
       <div className="wrap nav__inner">
         <Link to="/" className="nav__name">Dragan Bjelica</Link>
         <nav className="nav__links">
-          <a href="/#work">Work</a>
-          <a href="/#contact">Contact</a>
+          <Link to="/#work">Work</Link>
+          <Link to="/#contact">Contact</Link>
         </nav>
       </div>
     </header>

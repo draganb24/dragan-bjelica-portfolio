@@ -5,17 +5,45 @@ const BOOKING_URL = 'mailto:draganbjelica12@gmail.com?subject=15-min%20call';
 
 const WEB3FORMS_ACCESS_KEY = 'a4626b66-fc06-43dc-9e0a-3d4742a61d85';
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export default function Contact() {
   const [status, setStatus] = useState('idle'); // idle | sending | success | error
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [errors, setErrors] = useState({});
+  const [form, setForm] = useState({ name: '', email: '', message: '', botcheck: false });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
+    const { name, value, type, checked } = e.target;
+    setForm((prev) => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
+    if (errors[name]) setErrors((prev) => ({ ...prev, [name]: undefined }));
+  };
+
+  const validate = () => {
+    const next = {};
+    if (!form.name.trim()) next.name = 'Please enter your name.';
+    if (!form.email.trim()) next.email = 'Please enter your email.';
+    else if (!EMAIL_RE.test(form.email.trim())) next.email = 'That email doesn’t look right.';
+    if (!form.message.trim()) next.message = 'Please write a short message.';
+    return next;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (status === 'sending') return;
+
+    if (form.botcheck) {
+      setStatus('success');
+      setForm({ name: '', email: '', message: '', botcheck: false });
+      return;
+    }
+
+    const found = validate();
+    if (Object.keys(found).length > 0) {
+      setErrors(found);
+      return;
+    }
+    setErrors({});
+
     if (WEB3FORMS_ACCESS_KEY === 'YOUR_WEB3FORMS_ACCESS_KEY') {
       setStatus('error');
       return;
@@ -85,9 +113,13 @@ export default function Contact() {
                 required
                 value={form.name}
                 onChange={handleChange}
-                className="contact-form__input"
+                aria-invalid={Boolean(errors.name)}
+                className={`contact-form__input${errors.name ? ' contact-form__input--err' : ''}`}
                 placeholder="Your name"
               />
+              {errors.name && (
+                <p className="contact-form__field-err" role="alert">{errors.name}</p>
+              )}
             </div>
 
             <div className="contact-form__row">
@@ -100,9 +132,13 @@ export default function Contact() {
                 required
                 value={form.email}
                 onChange={handleChange}
-                className="contact-form__input"
+                aria-invalid={Boolean(errors.email)}
+                className={`contact-form__input${errors.email ? ' contact-form__input--err' : ''}`}
                 placeholder="you@company.com"
               />
+              {errors.email && (
+                <p className="contact-form__field-err" role="alert">{errors.email}</p>
+              )}
             </div>
 
             <div className="contact-form__row">
@@ -114,9 +150,13 @@ export default function Contact() {
                 required
                 value={form.message}
                 onChange={handleChange}
-                className="contact-form__input contact-form__textarea"
+                aria-invalid={Boolean(errors.message)}
+                className={`contact-form__input contact-form__textarea${errors.message ? ' contact-form__input--err' : ''}`}
                 placeholder="What are you working on?"
               />
+              {errors.message && (
+                <p className="contact-form__field-err" role="alert">{errors.message}</p>
+              )}
             </div>
 
             {/* Honeypot: hidden from humans, bots that fill it get flagged as spam. */}
@@ -126,6 +166,8 @@ export default function Contact() {
               className="contact-form__honeypot"
               tabIndex={-1}
               aria-hidden="true"
+              checked={form.botcheck}
+              onChange={handleChange}
             />
 
             <button type="submit" className="contact-form__submit" disabled={status === 'sending'}>

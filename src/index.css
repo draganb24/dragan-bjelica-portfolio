@@ -480,6 +480,18 @@ button:focus-visible {
 
 .contact-form__textarea { resize: vertical; min-height: 104px; }
 
+.contact-form__input--err {
+  border-color: #e6725f;
+  box-shadow: 0 0 0 3px rgba(230, 114, 95, 0.18);
+}
+
+.contact-form__field-err {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: #e6725f;
+  margin: 6px 0 0;
+}
+
 .contact-form__honeypot {
   position: absolute;
   left: -9999px;

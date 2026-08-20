@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dragan-bjelica.vercel.app/sitemap.xml
